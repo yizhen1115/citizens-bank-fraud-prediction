@@ -516,7 +516,7 @@ def _generate_rdi_dt_and_reason(
     return rdi_dt, reason
 
 
-def generate_fake_citizens_raw_data(
+def generate_synthetic_citizens_raw_data(
     n_rows: int = 17_765,
     random_state: int = 42,
 ) -> pd.DataFrame:
@@ -819,7 +819,7 @@ def generate_fake_citizens_raw_data(
     return df
 
 
-def validate_fake_citizens_raw_data(df: pd.DataFrame) -> None:
+def validate_synthetic_citizens_raw_data(df: pd.DataFrame) -> None:
     """
     Print validation checks against the intended raw-data schema.
     """
@@ -860,12 +860,12 @@ def validate_fake_citizens_raw_data(df: pd.DataFrame) -> None:
 
 
 if __name__ == "__main__":
-    fake_df = generate_fake_citizens_raw_data(random_state=42)
-    validate_fake_citizens_raw_data(fake_df)
+    synthetic_df = generate_synthetic_citizens_raw_data(random_state=42)
+    validate_synthetic_citizens_raw_data(synthetic_df)
 
     # Save synthetic raw data under the project raw-data directory.
-    output_path = Path("data/raw/fake_citizens_raw_data.csv")
+    output_path = Path("data/raw/synthetic_citizens_raw_data.csv")
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
-    fake_df.to_csv(output_path, index=False)
+    synthetic_df.to_csv(output_path, index=False)
     print(f"\nSaved: {output_path}")
